@@ -1,0 +1,5 @@
+docker run -d \
+	-v `pwd`/aws_reg_config.yml:/etc/docker/registry/config.yml \
+        -p 5001:5001 \
+        -p 50000:5000 \
+        --name daikuei_aws_registry registry:2
