@@ -1,0 +1,12 @@
+#!/bin/bash
+# docker tag [OPTIONS] IMAGE[:TAG] [REGISTRYHOST/][USERNAME/]NAME[:TAG]
+# docker tag SOURCE_IMAGE[:TAG] {DockerHub}/TARGET_IMAGE[:TAG]
+# e.g. 
+#   docker tag 444e5e266224 daikuei/daikuei/alpine-apache
+# or 
+#   docker tag daikuei/alpine-apache daikuei/daikuei/alpine-apache
+
+docker tag local/alpine-apache daikuei/alpine-apache:latest
+docker login
+docker push daikuei/alpine-apache:latest
+

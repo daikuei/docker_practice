@@ -1,1 +1,1 @@
-docker run  -idt --rm --name alpine-apache -p 80:80 daikuei/alpine-apache
+docker run  -idt --rm --name alpine-apache -p 80:80 local/alpine-apache

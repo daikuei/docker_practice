@@ -1,1 +1,1 @@
-docker build -t daikuei/alpine-apache .
+docker build -t local/alpine-apache .

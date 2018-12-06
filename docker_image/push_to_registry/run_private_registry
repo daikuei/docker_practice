@@ -1,0 +1,15 @@
+#!/bin/bash
+# docker tag [OPTIONS] IMAGE[:TAG] [REGISTRYHOST/][USERNAME/]NAME[:TAG]
+# docker tag SOURCE_IMAGE[:TAG] TARGET_IMAGE[:TAG]
+# e.g. 
+#   docker tag 444e5e266224 127.0.0.1:5000/daikuei/alpine-apache
+# or 
+#   docker tag daikuei/alpine-apache 127.0.0.1:5000/daikuei/alpine-apache
+
+docker tag local/alpine-apache 127.0.0.1:5000/alpine-apache
+docker push 127.0.0.1:5000/alpine-apache
+
+
+# curl GET -i 'http://127.0.0.1:5000/v2/alpine-apache/tags/list'
+# curl GET -H 'Accept: application/vnd.docker.distribution.manifest.v2+json' -i 'http://127.0.0.1:5000/v2/alpine-apache/manifests/latest' -v
+# curl -X DELETE -i 'http://127.0.0.1:5000/v2/alpine-apache/manifests/sha256:e5471872e032f0fe958cacd6953fe1ab74c31ab1d337ccb22e2119f3f29607ed' 
