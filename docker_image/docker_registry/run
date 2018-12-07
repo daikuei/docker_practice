@@ -1,5 +1,6 @@
-docker -D run -d \
-        --restart=always \
+docker run --rm \
+        -d \
+        --restart=no \
         --name daikuei_registry \
         -v ${PWD}/storage:/var/lib/registry \
         -v ${PWD}/private_reg_config.yml:/etc/docker/registry/config.yml \
