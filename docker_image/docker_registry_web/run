@@ -1,7 +1,16 @@
+#!/bin/bash
+# https://hub.docker.com/r/hyper/docker-registry-web
+
+
 docker run --rm \
            -d \
            -p 8080:8080 \
            --link daikuei_registry \
-           -e REGISTRY_URL=http://`hostname -i | cut -d" " -f1`:5000/v2 \
            --name registry-web  \
+           -v ${PWD}/conf/registry-web.yml:/conf/config.yml \
+           -v ${PWD}/db:/data \
            hyper/docker-registry-web
+
+#          -e REGISTRY_URL=172.17.0.1:5000/v2 \
+#          -e REGISTRY_URL=http://`hostname -i | cut -d" " -f1`:5000/v2 \
+#           -v $(PWD)/conf/auth.key:/conf/auth.key 

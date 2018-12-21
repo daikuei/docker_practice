@@ -1,0 +1,17 @@
+#!/bin/bash
+
+docker run --entrypoint htpasswd registry:2 -Bbn daikuei 123123 > ${PWD}/config/htpasswd
+
+docker run --rm \
+        -d \
+        --restart=no \
+        --name daikuei_registry_auth \
+        -v ${PWD}/storage:/var/lib/registry \
+        -v ${PWD}/config/private_reg_config_auth.yml:/etc/docker/registry/config.yml \
+	-v ${PWD}/config/htpasswd:/auth/htpasswd \
+        -p 5001:5000 \
+        registry:2
+
+
+# login to local docker register
+# docker login -u daikuei -p 123123 127.0.0.1:5000 

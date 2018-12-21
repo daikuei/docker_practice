@@ -1,0 +1,17 @@
+registry:
+  # Docker registry url
+  url: http://daikuei_registry:5000/v2
+  # Docker registry fqdn
+  name: localhost:5000
+  # To allow image delete, should be false
+  readonly: false
+  auth:
+    # Enable authentication
+    enabled: false
+    # enabled: true
+    # Token issuer
+    # should equals to auth.token.issuer of docker registry
+   ## issuer: 'my issuer'
+    # Private key for token signing
+    # certificate used on auth.token.rootcertbundle should signed by this key
+   ##key: /conf/auth.key

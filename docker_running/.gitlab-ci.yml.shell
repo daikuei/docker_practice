@@ -1,0 +1,12 @@
+before_script:
+  - docker info
+
+variables:
+  CONTAINER_TEST_IMAGE: 172.17.0.1:5000/my-image:$CI_COMMIT_REF_SLUG
+  CONTAINER_RELEASE_IMAGE: 172.17.0.1:5000/my-image:latest
+
+
+build_image:
+  script:
+    - docker build -t $CONTAINER_TEST_IMAGE .
+    - docker push $CONTAINER_TEST_IMAGE

@@ -1,0 +1,27 @@
+#!/bin/bash
+# 1. cleanup gitlab-runner configure file
+rm ${PWD}/config/config.toml
+
+# 2. Register GitLab Runner to use docker and privileged mode	    
+docker run --rm -i \
+           -v ${PWD}/config:/etc/gitlab-runner \
+	   gitlab/gitlab-runner register\
+	   --non-interactive \
+	   --executor docker \
+	   --url http://`hostname -i | cut -d" " -f1`/ci \
+           --registration-token CPLKM4x6Cb_FHGv6FNJ9 \
+           --description "Docker in docker" \
+           --docker-image "docker:stable" \
+	   --run-untagged \
+           --docker-privileged
+
+
+# 3. Use docker in gitlab-build script(need to inclusion  docker:dind service)
+# cat ../.gitlab-ci.yml
+cp ../.gitlab-ci.yml.dind ../.gitlab-ci.yml
+git add ../.gitlab-ci.yml config/config.toml && git commit -m "test gitlab dind" && git push
+
+
+# 4. start gitlab-runner 
+gitlab-runner run -c ${PWD}/config/config.toml 
+

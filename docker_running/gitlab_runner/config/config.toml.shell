@@ -7,7 +7,7 @@ check_interval = 0
 [[runners]]
   name = "Docker in docker"
   url = "http://192.168.50.2/ci"
-  token = "42a6a3263ed6e1215267ed4e5db3bf"
+  token = "e2712d41c52a8c7a41fbb86c8dc3d7"
   executor = "docker"
   [runners.docker]
     tls_verify = false
