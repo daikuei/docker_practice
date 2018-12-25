@@ -1,2 +1,4 @@
 ex1
 .project
+docker_running/.gitlab-ci.yml
+docker_running/gitlab_runner/config/config.toml
