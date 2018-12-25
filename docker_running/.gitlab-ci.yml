@@ -6,18 +6,15 @@ variables:
   CONTAINER_TEST_IMAGE: 172.17.0.1:5000/my-image:$CI_COMMIT_REF_SLUG
   CONTAINER_RELEASE_IMAGE: 172.17.0.1:5000/my-image:latest
 
-
 services:
-  - name: docker:dind
-    command: ["--insecure-registry=172.17.0.1:5000"]
+  - docker:dind
 
 stages:
   - build
-#  - test
-#  - release
   
 before_script:
-   - docker --version 
+   - docker info
+   - whoami 
 
 build:
    stage: build
@@ -25,17 +22,3 @@ build:
      - docker build -t $CONTAINER_TEST_IMAGE .
      - docker push $CONTAINER_TEST_IMAGE
 
-#test:
-#  stage: test
-#  script:
-#    - docker pull $CONTAINER_TEST_IMAGE
-#    - docker run $CONTAINER_TEST_IMAGE /script/to/run/tests
-    
-release-image:
-  stage: release
-  script:
-    - docker pull $CONTAINER_TEST_IMAGE
-    - docker tag $CONTAINER_TEST_IMAGE $CONTAINER_RELEASE_IMAGE
-    - docker push $CONTAINER_RELEASE_IMAGE
-  only:
-    - master

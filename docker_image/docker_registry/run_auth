@@ -1,8 +1,8 @@
 #!/bin/bash
 
-docker run --entrypoint htpasswd registry:2 -Bbn daikuei 123123 > ${PWD}/config/htpasswd
+docker run --rm --entrypoint htpasswd registry:2 -Bbn daikuei 123123 > ${PWD}/config/htpasswd
 
-docker run --rm \
+docker run `# --rm` \
         -d \
         --restart=no \
         --name daikuei_registry_auth \
@@ -14,4 +14,4 @@ docker run --rm \
 
 
 # login to local docker register
-# docker login -u daikuei -p 123123 127.0.0.1:5000 
+# docker login -u daikuei -p 123123 127.0.0.1:5001

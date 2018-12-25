@@ -1,5 +1,9 @@
 version: 0.1
 log:
+  accesslog:
+    disabled: false
+  level: debug
+  formatter: text
   fields:
     service: registry
 loglevel: debug
@@ -16,6 +20,8 @@ http:
     X-Content-Type-Options: [nosniff]
   debug:
     addr: localhost:5001
+  http2:
+    disabled: false
 health:
   storagedriver:
     enabled: true
