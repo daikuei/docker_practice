@@ -9,8 +9,9 @@ docker run --rm -i \
 	   --executor docker  \
 	   --url http://`hostname -i | cut -d" " -f1`/ci \
            --registration-token CPLKM4x6Cb_FHGv6FNJ9 \
-           --description "docker runner" \
-  	   --docker-image "docker:stable" 
+           --description "running on docker socket bind" \
+  	   --docker-image "docker:stable" 	\
+	   --docker-volumes /var/run/docker.sock:/var/run/docker.sock
 
 docker run -d \
            --restart=no \

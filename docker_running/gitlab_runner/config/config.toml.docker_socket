@@ -5,9 +5,9 @@ check_interval = 0
   session_timeout = 1800
 
 [[runners]]
-  name = "docker runner"
+  name = "running on docker socket bind"
   url = "http://172.17.0.1/ci"
-  token = "176199635df38f2cd880e7cc4eb766"
+  token = "2dffd86f90cdc41c6e72d86a44f5b9"
   executor = "docker"
   [runners.docker]
     tls_verify = false
