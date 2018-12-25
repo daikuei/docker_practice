@@ -6,7 +6,7 @@ check_interval = 0
 
 [[runners]]
   name = "docker runner"
-  url = "http://192.168.10.100/ci"
+  url = "http://172.17.0.1/ci"
   token = "176199635df38f2cd880e7cc4eb766"
   executor = "docker"
   [runners.docker]
